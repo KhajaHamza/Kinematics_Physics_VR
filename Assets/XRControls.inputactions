@@ -1,0 +1,34 @@
+{
+    "name": "XRControls",
+    "maps": [
+        {
+            "name": "VRControls",
+            "id": "721ec25e-110f-4ba9-a215-154369eec730",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "b2adbf62-5ed9-42a1-9cf4-9b09f776e65d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "90fd75e1-8cf1-4602-8dae-d66d5b947499",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

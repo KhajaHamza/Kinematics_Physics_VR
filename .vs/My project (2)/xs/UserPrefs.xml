@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CameraFollower.cs">
+    <Files>
+      <File FileName="Assets/SimpleCarMovement.cs" Line="12" Column="1" />
+      <File FileName="Assets/FollowMidpoint.cs" />
+      <File FileName="Assets/ConstantVelocity.cs" Line="25" Column="1" />
+      <File FileName="Assets/PauseManager.cs" Line="36" Column="1" />
+      <File FileName="Assets/CameraFollower.cs" Line="16" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f8cd66d-d613-4886-b3d9-1ffb92c0e7e3" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
