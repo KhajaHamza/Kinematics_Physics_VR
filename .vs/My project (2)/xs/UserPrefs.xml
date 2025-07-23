@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CameraFollower.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/XRCameraToggleFollow.cs">
     <Files>
       <File FileName="Assets/SimpleCarMovement.cs" Line="12" Column="1" />
-      <File FileName="Assets/FollowMidpoint.cs" />
-      <File FileName="Assets/ConstantVelocity.cs" Line="25" Column="1" />
-      <File FileName="Assets/PauseManager.cs" Line="36" Column="1" />
-      <File FileName="Assets/CameraFollower.cs" Line="16" Column="1" />
+      <File FileName="Assets/ConstantVelocity.cs" />
+      <File FileName="Assets/PauseManager.cs" />
+      <File FileName="Assets/CameraFollower.cs" Line="6" Column="41" />
+      <File FileName="Assets/XRCameraToggleFollow.cs" Line="89" Column="2" />
+      <File FileName="Assets/SimulationReset.cs" Line="22" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

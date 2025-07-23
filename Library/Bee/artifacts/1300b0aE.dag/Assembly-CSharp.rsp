@@ -374,10 +374,11 @@
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.6f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/CameraFollower.cs"
 "Assets/ConstantVelocity.cs"
-"Assets/FollowMidpoint.cs"
 "Assets/PauseManager.cs"
 "Assets/SimpleCarMovement.cs"
+"Assets/SimulationReset.cs"
 "Assets/testsample.cs"
+"Assets/XRCameraToggleFollow.cs"
 -langversion:9.0
 
 /deterministic

@@ -2,13 +2,14 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AcceleratedCarMovementWithTicks
-    - CameraFollower
     - ConstantVelocityCar
-    - FollowMidpoint
     - PauseManager
+    - SimulationReset
+    - XRCameraToggleFollow
     - testsample
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
+    - UnityEngine.InputSystem.InputActionReference
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
@@ -34,6 +35,7 @@ ScriptsOnlyBuild:
     Unity.XR.Interaction.Toolkit.Editor.dll:
     - UnityEditor.XR.Interaction.Toolkit.XRInteractionEditorSettings
     Unity.XR.Interaction.Toolkit.dll:
+    - UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider
     - UnityEngine.XR.Interaction.Toolkit.ActionBasedController
     - UnityEngine.XR.Interaction.Toolkit.Inputs.InputActionManager
     - UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.XRDeviceSimulatorSettings
@@ -131,55 +133,59 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16932}
+      Script: {instanceID: 16934}
     - Class: 114
-      Script: {instanceID: 17000}
+      Script: {instanceID: 17002}
     - Class: 114
-      Script: {instanceID: 17430}
+      Script: {instanceID: 17432}
     - Class: 114
-      Script: {instanceID: 17874}
+      Script: {instanceID: 17876}
     - Class: 114
-      Script: {instanceID: 18014}
+      Script: {instanceID: 18016}
     - Class: 114
-      Script: {instanceID: 18270}
+      Script: {instanceID: 18272}
     - Class: 114
-      Script: {instanceID: 18644}
+      Script: {instanceID: 18646}
     - Class: 114
-      Script: {instanceID: 19504}
+      Script: {instanceID: 19506}
     - Class: 114
-      Script: {instanceID: 19510}
+      Script: {instanceID: 19512}
     - Class: 114
-      Script: {instanceID: 19590}
+      Script: {instanceID: 19592}
     - Class: 114
-      Script: {instanceID: 19694}
+      Script: {instanceID: 19696}
     - Class: 114
-      Script: {instanceID: 20024}
+      Script: {instanceID: 20026}
     - Class: 114
-      Script: {instanceID: 20362}
+      Script: {instanceID: 20366}
     - Class: 114
-      Script: {instanceID: 20730}
+      Script: {instanceID: 20734}
     - Class: 114
-      Script: {instanceID: 21322}
+      Script: {instanceID: 21326}
     - Class: 114
-      Script: {instanceID: 21934}
+      Script: {instanceID: 21938}
     - Class: 114
-      Script: {instanceID: 22078}
+      Script: {instanceID: 22082}
     - Class: 114
-      Script: {instanceID: 22278}
+      Script: {instanceID: 22282}
     - Class: 114
-      Script: {instanceID: 22642}
+      Script: {instanceID: 22646}
     - Class: 114
-      Script: {instanceID: 22726}
+      Script: {instanceID: 22730}
     - Class: 114
-      Script: {instanceID: 22780}
+      Script: {instanceID: 23026}
     - Class: 114
-      Script: {instanceID: 23022}
+      Script: {instanceID: 23216}
     - Class: 114
-      Script: {instanceID: 23520}
+      Script: {instanceID: 23524}
     - Class: 114
-      Script: {instanceID: 24478}
+      Script: {instanceID: 24118}
     - Class: 114
-      Script: {instanceID: 28428}
+      Script: {instanceID: 24482}
+    - Class: 114
+      Script: {instanceID: 28198}
+    - Class: 114
+      Script: {instanceID: 28640}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -957,6 +963,12 @@ ScriptsOnlyBuild:
     className: DictionaryAsset
   - hash:
       serializedVersion: 2
+      Hash: 8a66967decc8d467c80e7a17bf110f95
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CameraFollower
+  - hash:
+      serializedVersion: 2
       Hash: a94bbf695b10f30c27ea9276dd6ee005
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit
@@ -1381,12 +1393,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 63b091597c0a1a9702b579e57c79bb49
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FollowMidpoint
   - hash:
       serializedVersion: 2
       Hash: a03cf6f60c605d858f83449f4b4fc400
@@ -1839,10 +1845,16 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 579b80566db1c7031a2faa73bc0eb9e8
+      Hash: 8acac7050cf85f62365ce9b856c45e05
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: CameraFollower
+    className: XRCameraToggleFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 85b3529fe7a9003c9ebc64bbcee7e063
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SimulationReset
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

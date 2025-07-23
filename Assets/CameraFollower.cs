@@ -2,14 +2,34 @@ using UnityEngine;
 
 public class CameraFollower : MonoBehaviour
 {
-    public Transform target; // Accelerated car
-    public Vector3 offset = new Vector3(0, 1.6f, -3f);
+    public Transform targetCar;         // Drag your Accelerated Car here in the Inspector
+    public Vector3 offset = new Vector3(0, 2, -5); // Adjust as needed
+    public float smoothSpeed = 5f;
 
-    void Update()
+    private bool isFollowing = true;
+
+    void LateUpdate()
     {
-        if (PauseManager.isSimulationPaused || target == null)
+        // If simulation is paused, stop following
+        if (PauseManager.isSimulationPaused)
+        {
+            isFollowing = false;
             return;
+        }
 
-        transform.position = target.position + offset;
+        // If we're resuming from pause, snap the camera back to follow the car
+        if (!isFollowing)
+        {
+            transform.position = targetCar.position + offset;
+            isFollowing = true;
+        }
+
+        // Smooth follow
+        if (targetCar != null && isFollowing)
+        {
+            Vector3 desiredPosition = targetCar.position + offset;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+            transform.LookAt(targetCar);
+        }
     }
 }

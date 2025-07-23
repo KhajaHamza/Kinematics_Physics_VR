@@ -60,7 +60,8 @@
   <ItemGroup>
     <Compile Include="Assets/SimpleCarMovement.cs" />
     <Compile Include="Assets/PauseManager.cs" />
-    <Compile Include="Assets/FollowMidpoint.cs" />
+    <Compile Include="Assets/SimulationReset.cs" />
+    <Compile Include="Assets/XRCameraToggleFollow.cs" />
     <Compile Include="Assets/testsample.cs" />
     <Compile Include="Assets/ConstantVelocity.cs" />
     <Compile Include="Assets/CameraFollower.cs" />
