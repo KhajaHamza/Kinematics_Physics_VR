@@ -1,17 +1,35 @@
 ﻿<Properties StartupConfiguration="{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/XRCameraToggleFollow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SimpleCarMovement.cs">
     <Files>
-      <File FileName="Assets/SimpleCarMovement.cs" Line="12" Column="1" />
-      <File FileName="Assets/ConstantVelocity.cs" />
+      <File FileName="Assets/SimpleCarMovement.cs" Line="29" Column="39" />
+      <File FileName="Assets/ConstantVelocity.cs" Line="38" Column="1" />
       <File FileName="Assets/PauseManager.cs" />
-      <File FileName="Assets/CameraFollower.cs" Line="6" Column="41" />
-      <File FileName="Assets/XRCameraToggleFollow.cs" Line="89" Column="2" />
-      <File FileName="Assets/SimulationReset.cs" Line="22" Column="6" />
+      <File FileName="Assets/CameraFollower.cs" />
+      <File FileName="Assets/XRCameraToggleFollow.cs" />
+      <File FileName="Assets/SimulationReset.cs" />
+      <File FileName="../../Downloads/GraphHandler.cs" />
+      <File FileName="../../Downloads/GraphSettings.cs" />
+      <File FileName="Assets/VelocityChartManager.cs" />
+      <File FileName="Assets/SceneSwitcher.cs" Line="16" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My project (2)" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="SimpleCarMovement.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f8cd66d-d613-4886-b3d9-1ffb92c0e7e3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="902edc30-4f6e-403a-b285-e914b955ea44" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

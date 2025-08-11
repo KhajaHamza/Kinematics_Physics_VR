@@ -60,9 +60,12 @@
   <ItemGroup>
     <Compile Include="Assets/SimpleCarMovement.cs" />
     <Compile Include="Assets/PauseManager.cs" />
+    <Compile Include="Assets/VelocityChartManager.cs" />
+    <Compile Include="Assets/SceneSwitcher.cs" />
     <Compile Include="Assets/SimulationReset.cs" />
     <Compile Include="Assets/XRCameraToggleFollow.cs" />
     <Compile Include="Assets/testsample.cs" />
+    <Compile Include="Assets/MenuToggleController.cs" />
     <Compile Include="Assets/ConstantVelocity.cs" />
     <Compile Include="Assets/CameraFollower.cs" />
   </ItemGroup>
@@ -759,11 +762,11 @@
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.CoreUtils">
       <HintPath>Library/ScriptAssemblies/Unity.XR.CoreUtils.dll</HintPath>
@@ -830,6 +833,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="XCharts.Runtime.csproj">
+      <Project>{5DAE7934-A272-7940-D25C-BF03096584EF}</Project>
+      <Name>XCharts.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="XCharts.Examples.csproj">
+      <Project>{6B610FEA-7C54-FADF-8201-0E811F3730C6}</Project>
+      <Name>XCharts.Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="XCharts.Editor.csproj">
+      <Project>{00DDD6CD-1BEB-B014-8BC3-C7365AC3BC05}</Project>
+      <Name>XCharts.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -3,8 +3,11 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AcceleratedCarMovementWithTicks
     - ConstantVelocityCar
+    - MenuToggleController
     - PauseManager
+    - SceneSwitcher
     - SimulationReset
+    - VelocityChartManager
     - XRCameraToggleFollow
     - testsample
     Unity.InputSystem.dll:
@@ -13,6 +16,7 @@ ScriptsOnlyBuild:
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
+    - UnityEngine.InputSystem.UI.InputSystemUIInputModule
     - UnityEngine.InputSystem.XR.TrackedPoseDriver
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -23,6 +27,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -40,6 +45,7 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Interaction.Toolkit.Inputs.InputActionManager
     - UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.XRDeviceSimulatorSettings
     - UnityEngine.XR.Interaction.Toolkit.InteractionLayerSettings
+    - UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster
     - UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
     - UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual
     - UnityEngine.XR.Interaction.Toolkit.XRRayInteractor
@@ -57,15 +63,36 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
-    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Outline
+    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
+    - UnityEngine.UI.VerticalLayoutGroup
+    XCharts.Runtime:
+    - XCharts.Runtime.Lang
+    - XCharts.Runtime.Theme
+    - XCharts.Runtime.XCSettings
+    XCharts.Runtime.dll:
+    - XCharts.Runtime.ChartLabel
+    - XCharts.Runtime.Lang
+    - XCharts.Runtime.LineChart
+    - XCharts.Runtime.Painter
+    - XCharts.Runtime.Theme
+    - XCharts.Runtime.XCSettings
   serializedClasses:
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputAction
     - UnityEngine.InputSystem.InputActionMap
     - UnityEngine.InputSystem.InputActionProperty
     - UnityEngine.InputSystem.InputBinding
+    - UnityEngine.InputSystem.InputControlScheme
+    - UnityEngine.InputSystem.InputControlScheme/DeviceRequirement
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
     - TMPro.FontAssetCreationSettings
@@ -76,6 +103,11 @@ ScriptsOnlyBuild:
     - TMPro.TMP_GlyphAdjustmentRecord
     - TMPro.TMP_GlyphPairAdjustmentRecord
     - TMPro.TMP_GlyphValueRecord
+    - TMPro.TMP_InputField/OnChangeEvent
+    - TMPro.TMP_InputField/SelectionEvent
+    - TMPro.TMP_InputField/SubmitEvent
+    - TMPro.TMP_InputField/TextSelectionEvent
+    - TMPro.TMP_InputField/TouchScreenKeyboardEvent
     - TMPro.TMP_Sprite
     - TMPro.TMP_SpriteCharacter
     - TMPro.TMP_SpriteGlyph
@@ -91,17 +123,87 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Interaction.Toolkit.UI.UIHoverExitEvent
     - UnityEngine.XR.Interaction.Toolkit.XRInteractorEvent
     UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.FontData
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-  methodsToPreserve: []
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
+    - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
+    XCharts.Runtime:
+    - XCharts.Runtime.AnimationAddition
+    - XCharts.Runtime.AnimationChange
+    - XCharts.Runtime.AnimationFadeIn
+    - XCharts.Runtime.AnimationFadeOut
+    - XCharts.Runtime.AnimationHiding
+    - XCharts.Runtime.AnimationInteraction
+    - XCharts.Runtime.AnimationStyle
+    - XCharts.Runtime.ArrowStyle
+    - XCharts.Runtime.AxisAnimation
+    - XCharts.Runtime.AxisLabel
+    - XCharts.Runtime.AxisLine
+    - XCharts.Runtime.AxisMinorSplitLine
+    - XCharts.Runtime.AxisMinorTick
+    - XCharts.Runtime.AxisName
+    - XCharts.Runtime.AxisSplitArea
+    - XCharts.Runtime.AxisSplitLine
+    - XCharts.Runtime.AxisTheme
+    - XCharts.Runtime.AxisTick
+    - XCharts.Runtime.Background
+    - XCharts.Runtime.BorderStyle
+    - XCharts.Runtime.ChartText
+    - XCharts.Runtime.ComponentTheme
+    - XCharts.Runtime.DataZoomTheme
+    - XCharts.Runtime.DebugInfo
+    - XCharts.Runtime.GridCoord
+    - XCharts.Runtime.IconStyle
+    - XCharts.Runtime.ImageStyle
+    - XCharts.Runtime.ItemStyle
+    - XCharts.Runtime.LabelStyle
+    - XCharts.Runtime.LangCandlestick
+    - XCharts.Runtime.LangTime
+    - XCharts.Runtime.LegendTheme
+    - XCharts.Runtime.Line
+    - XCharts.Runtime.LineStyle
+    - XCharts.Runtime.Location
+    - XCharts.Runtime.MLValue
+    - XCharts.Runtime.SerieData
+    - XCharts.Runtime.SerieSymbol
+    - XCharts.Runtime.SerieTheme
+    - XCharts.Runtime.Settings
+    - XCharts.Runtime.SubTitleTheme
+    - XCharts.Runtime.TextLimit
+    - XCharts.Runtime.TextPadding
+    - XCharts.Runtime.TextStyle
+    - XCharts.Runtime.ThemeStyle
+    - XCharts.Runtime.Title
+    - XCharts.Runtime.TitleTheme
+    - XCharts.Runtime.Tooltip
+    - XCharts.Runtime.TooltipTheme
+    - XCharts.Runtime.VisualMapTheme
+    - XCharts.Runtime.XAxis
+    - XCharts.Runtime.YAxis
+  methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneSwitcher
+    methodName: LoadSingleCarScene
+  - assembly: Assembly-CSharp
+    fullTypeName: SceneSwitcher
+    methodName: LoadMultipleCarScene
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/MultipleCarScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -133,59 +235,99 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16934}
+      Script: {instanceID: 16654}
     - Class: 114
-      Script: {instanceID: 17002}
+      Script: {instanceID: 16816}
     - Class: 114
-      Script: {instanceID: 17432}
+      Script: {instanceID: 16966}
     - Class: 114
-      Script: {instanceID: 17876}
+      Script: {instanceID: 17040}
     - Class: 114
-      Script: {instanceID: 18016}
+      Script: {instanceID: 17450}
+    - Class: 114
+      Script: {instanceID: 17494}
+    - Class: 114
+      Script: {instanceID: 17856}
+    - Class: 114
+      Script: {instanceID: 17976}
+    - Class: 114
+      Script: {instanceID: 18132}
     - Class: 114
       Script: {instanceID: 18272}
     - Class: 114
-      Script: {instanceID: 18646}
+      Script: {instanceID: 18412}
     - Class: 114
-      Script: {instanceID: 19506}
+      Script: {instanceID: 18826}
     - Class: 114
-      Script: {instanceID: 19512}
+      Script: {instanceID: 18860}
     - Class: 114
-      Script: {instanceID: 19592}
+      Script: {instanceID: 18892}
     - Class: 114
-      Script: {instanceID: 19696}
+      Script: {instanceID: 19760}
     - Class: 114
-      Script: {instanceID: 20026}
+      Script: {instanceID: 19766}
     - Class: 114
-      Script: {instanceID: 20366}
+      Script: {instanceID: 19852}
     - Class: 114
-      Script: {instanceID: 20734}
+      Script: {instanceID: 19964}
     - Class: 114
-      Script: {instanceID: 21326}
+      Script: {instanceID: 19982}
     - Class: 114
-      Script: {instanceID: 21938}
+      Script: {instanceID: 20296}
     - Class: 114
-      Script: {instanceID: 22082}
+      Script: {instanceID: 20316}
     - Class: 114
-      Script: {instanceID: 22282}
+      Script: {instanceID: 20326}
     - Class: 114
-      Script: {instanceID: 22646}
+      Script: {instanceID: 20382}
     - Class: 114
-      Script: {instanceID: 22730}
+      Script: {instanceID: 20694}
     - Class: 114
-      Script: {instanceID: 23026}
+      Script: {instanceID: 21088}
     - Class: 114
-      Script: {instanceID: 23216}
+      Script: {instanceID: 21456}
     - Class: 114
-      Script: {instanceID: 23524}
+      Script: {instanceID: 21548}
     - Class: 114
-      Script: {instanceID: 24118}
+      Script: {instanceID: 21644}
     - Class: 114
-      Script: {instanceID: 24482}
+      Script: {instanceID: 21742}
     - Class: 114
-      Script: {instanceID: 28198}
+      Script: {instanceID: 22124}
     - Class: 114
-      Script: {instanceID: 28640}
+      Script: {instanceID: 22416}
+    - Class: 114
+      Script: {instanceID: 22508}
+    - Class: 114
+      Script: {instanceID: 22534}
+    - Class: 114
+      Script: {instanceID: 22572}
+    - Class: 114
+      Script: {instanceID: 22784}
+    - Class: 114
+      Script: {instanceID: 23190}
+    - Class: 114
+      Script: {instanceID: 23602}
+    - Class: 114
+      Script: {instanceID: 23770}
+    - Class: 114
+      Script: {instanceID: 23806}
+    - Class: 114
+      Script: {instanceID: 23882}
+    - Class: 114
+      Script: {instanceID: 24138}
+    - Class: 114
+      Script: {instanceID: 24778}
+    - Class: 114
+      Script: {instanceID: 24806}
+    - Class: 114
+      Script: {instanceID: 24874}
+    - Class: 114
+      Script: {instanceID: 25180}
+    - Class: 114
+      Script: {instanceID: 25488}
+    - Class: 114
+      Script: {instanceID: 44974}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -198,11 +340,44 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 210
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/SingleCarScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -273,6 +448,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: ParallelChart
+  - hash:
+      serializedVersion: 2
       Hash: 94f8303fca6ba25383fc62595e324b7b
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -339,6 +520,12 @@ ScriptsOnlyBuild:
     className: XRInteractorLineVisual
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: CandlestickChart
+  - hash:
+      serializedVersion: 2
       Hash: 740697c74e223bef3d1cba022ccd5307
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.UI
@@ -373,6 +560,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnTriggerEnterMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 34fa63a30926bcf55d7323dae76be890
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: Painter
   - hash:
       serializedVersion: 2
       Hash: 63815508dfd6cf329d5c593ac8e76888
@@ -417,10 +610,22 @@ ScriptsOnlyBuild:
     className: TeleportationAnchor
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: ScatterChart
+  - hash:
+      serializedVersion: 2
       Hash: 6f67dd406ddfc18c9b3f8a90725c6266
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example03_ChartAnimation
   - hash:
       serializedVersion: 2
       Hash: 77de57a1c26a39f996296fd91661184a
@@ -433,6 +638,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Audio
     className: AudioAffordanceThemeDatum
+  - hash:
+      serializedVersion: 2
+      Hash: b083c03c3811a31477c5a476d3ba01e2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: VelocityChartManager
   - hash:
       serializedVersion: 2
       Hash: 484e965de7b4e6f365e5a30bfd5d254f
@@ -519,22 +730,34 @@ ScriptsOnlyBuild:
     className: UnityMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: PolarChart
+  - hash:
+      serializedVersion: 2
+      Hash: 8acac7050cf85f62365ce9b856c45e05
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: XRCameraToggleFollow
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: CoroutineRunner
   - hash:
       serializedVersion: 2
-      Hash: 0c29011cc49a4f63ec721aee4a17c6c2
-    assemblyName: Unity.XR.Interaction.Toolkit
-    namespaceName: UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.Hands
-    className: HandExpressionCapture
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestRunner.Utils
     className: TestRunCallbackListener
+  - hash:
+      serializedVersion: 2
+      Hash: 0c29011cc49a4f63ec721aee4a17c6c2
+    assemblyName: Unity.XR.Interaction.Toolkit
+    namespaceName: UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation.Hands
+    className: HandExpressionCapture
   - hash:
       serializedVersion: 2
       Hash: 6498fc76484598db46c5c1a11bab42fa
@@ -645,10 +868,22 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
+      Hash: 85b3529fe7a9003c9ebc64bbcee7e063
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SimulationReset
+  - hash:
+      serializedVersion: 2
       Hash: c24b47e0d10571c027b668813df3fb59
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.Filtering
     className: PokeThresholdDatum
+  - hash:
+      serializedVersion: 2
+      Hash: f08d6225633e335420a455a442cd51a6
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example01_RandomData
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -705,6 +940,12 @@ ScriptsOnlyBuild:
     className: InputActionImporterEditor
   - hash:
       serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example02_ChartEvent
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -718,6 +959,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example40_Radar
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSelectMessageListener
@@ -727,6 +974,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Rendering
     className: MaterialInstanceHelper
+  - hash:
+      serializedVersion: 2
+      Hash: d24e56c16a2836a4fbd56d505a50b0d2
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example90_Candlestick
   - hash:
       serializedVersion: 2
       Hash: 200559deccefc262acddc99314e6e69e
@@ -783,6 +1036,12 @@ ScriptsOnlyBuild:
     className: TextMeshPro
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: SimplifiedCandlestickChart
+  - hash:
+      serializedVersion: 2
       Hash: c343da5828fddd0a899e69eb0f447fd5
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -799,6 +1058,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Management
     namespaceName: UnityEngine.XR.Management
     className: XRManagerSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example12_CustomDrawing
   - hash:
       serializedVersion: 2
       Hash: 4565f705c6c1c79a36eb9f8c46953151
@@ -835,6 +1100,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 1a928c7ecb5b40bfbb877a57520940c8
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: UIComponent
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -877,6 +1148,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: bcf0d46a253288ae0963af0f7995a1a4
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: ChartLabel
   - hash:
       serializedVersion: 2
       Hash: a14ae47ece79ba54bdc6af95456d6286
@@ -945,6 +1222,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: df929938bca0de809e169196cac69241
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MenuToggleController
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -955,6 +1238,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit
     className: LocomotionSystem
+  - hash:
+      serializedVersion: 2
+      Hash: ebe2081f188d285beb97c4d0c5b94d23
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: XCSettings
   - hash:
       serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
@@ -979,6 +1268,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: BaseChart
   - hash:
       serializedVersion: 2
       Hash: d2cdc988562557524570d164f7c0abfa
@@ -1077,6 +1372,12 @@ ScriptsOnlyBuild:
     className: XRUIInputModule
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: SimplifiedBarChart
+  - hash:
+      serializedVersion: 2
       Hash: f9d348258e49211579237595c7d91a39
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Primitives
@@ -1119,6 +1420,12 @@ ScriptsOnlyBuild:
     className: BaseInputOverride
   - hash:
       serializedVersion: 2
+      Hash: 34fa63a30926bcf55d7323dae76be890
+    assemblyName: XCharts.Runtime
+    namespaceName: XUGL
+    className: UGLExample
+  - hash:
+      serializedVersion: 2
       Hash: 6237f92becd6162fa105361ab9ce2a00
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1141,6 +1448,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Toggle
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example05_DynamicChart
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1168,6 +1481,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example21_BarRace
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionEnter2DMessageListener
@@ -1189,6 +1508,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Rendering
     className: Vector2MaterialPropertyAffordanceReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: PieChart
   - hash:
       serializedVersion: 2
       Hash: 304e5876521a5fc876aba0cb79927000
@@ -1215,6 +1540,12 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
+      Hash: 3af8d5ba1c5e53c38483df1d31d93f69
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: XLog
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1225,6 +1556,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example30_PieChart
   - hash:
       serializedVersion: 2
       Hash: 95f87a8ce891ee27b611cab95db27edf
@@ -1275,6 +1612,18 @@ ScriptsOnlyBuild:
     className: InputActionManager
   - hash:
       serializedVersion: 2
+      Hash: 1ff384d0c266a3127f06ad2576230bc3
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: Lang
+  - hash:
+      serializedVersion: 2
+      Hash: ee20b2318c11b08acd7dd7e6a296c8ca
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: Theme
+  - hash:
+      serializedVersion: 2
       Hash: 6a356b04c25c0bb008c1b24bf8b0f996
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -1305,6 +1654,18 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example00_CheatSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example41_RadarUpdate
+  - hash:
+      serializedVersion: 2
       Hash: df9cc453258e2fed95306398a90f4e13
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit
@@ -1321,6 +1682,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.Inputs
     className: XRInputModalityManager
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example20_BarChart
   - hash:
       serializedVersion: 2
       Hash: 6728c2f83a13bcf4de335bf4a1e1460d
@@ -1351,6 +1718,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpAsButtonMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example04_DataZoom
   - hash:
       serializedVersion: 2
       Hash: 470295e574d78722e2ba3bf9ecfe8332
@@ -1399,6 +1772,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: RadarChart
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1456,6 +1835,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example_Test
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnDragMessageListener
@@ -1507,6 +1892,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Oculus
     namespaceName: Unity.XR.Oculus
     className: OculusLoader
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example13_LineSimple
   - hash:
       serializedVersion: 2
       Hash: 98037079da196c01f591560871df1575
@@ -1563,6 +1954,12 @@ ScriptsOnlyBuild:
     className: XRDirectInteractor
   - hash:
       serializedVersion: 2
+      Hash: 55084f53df017425caa4a7305fc5b0ed
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: BaseGraph
+  - hash:
+      serializedVersion: 2
       Hash: 6b882e53bdcecc3a46a000aa7b8c9bf9
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Rendering
@@ -1579,6 +1976,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerDownMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: HeatmapChart
   - hash:
       serializedVersion: 2
       Hash: 0283d72277bfbf8d7208b04611f90e66
@@ -1635,6 +2038,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 8c845328d4666547f33a34a5959fabd5
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example11_AddSinCurve
+  - hash:
+      serializedVersion: 2
       Hash: 41d15c5fd3130e8a658e81c0d2cdb73c
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives
@@ -1647,10 +2056,28 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: RingChart
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example60_Heatmap
+  - hash:
+      serializedVersion: 2
       Hash: 7f7e136731a35f3142b6b2c9d0be5dd6
     assemblyName: Unity.XR.CoreUtils
     namespaceName: Unity.XR.CoreUtils.Datums
     className: AnimationCurveDatum
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example80_Polar
   - hash:
       serializedVersion: 2
       Hash: 1b5650135291b120fb6b46f6e6eea382
@@ -1663,6 +2090,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example31_PieUpdateName
   - hash:
       serializedVersion: 2
       Hash: bd13d7191a2587a524c249e9495f2bcc
@@ -1683,6 +2116,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: LineChart
+  - hash:
+      serializedVersion: 2
       Hash: 89214ab2df8b35fc12817c1964d0e038
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Transformation
@@ -1695,10 +2134,22 @@ ScriptsOnlyBuild:
     className: SwingArmModel
   - hash:
       serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: SimplifiedLineChart
+  - hash:
+      serializedVersion: 2
       Hash: 7a8368feb168f327323ffd90efc193c9
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit.Transformers
     className: XRDualGrabFreeTransformer
+  - hash:
+      serializedVersion: 2
+      Hash: 555723648b868d0b9b531aae696696cf
+    assemblyName: XCharts.Runtime
+    namespaceName: XCharts.Runtime
+    className: BarChart
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1791,6 +2242,12 @@ ScriptsOnlyBuild:
     className: MaterialPropertyBlockHelper
   - hash:
       serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example10_LineChart
+  - hash:
+      serializedVersion: 2
       Hash: 82b59cbf2608615432602f09b752ade3
     assemblyName: Unity.XR.Interaction.Toolkit
     namespaceName: UnityEngine.XR.Interaction.Toolkit
@@ -1840,22 +2297,23 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: XCharts.Examples
+    namespaceName: XCharts.Example
+    className: Example50_Scatter
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8acac7050cf85f62365ce9b856c45e05
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: XRCameraToggleFollow
-  - hash:
-      serializedVersion: 2
-      Hash: 85b3529fe7a9003c9ebc64bbcee7e063
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: SimulationReset
+    className: SceneSwitcher
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/MultipleCarScene.unity
+  - Assets/Scenes/SingleCarScene.unity
   playerPath: /Users/khaja/Documents/My project (2)/stimulation.apk
