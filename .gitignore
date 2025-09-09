@@ -1,19 +1,31 @@
+
+# Unity
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
+[Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/
+[Rr]ecordings/
 
-# Visual Studio / Rider
-.vscode/
+# IDE & OS
+.vs/
+.idea/
+.DS_Store
+
+# Unity generated project files
 *.csproj
-*.unityproj
 *.sln
 *.user
-*.suo
+*.pidb
+*.booproj
+*.svd
 
-# OS files
-.DS_Store
+# Platform builds
+*.apk
+*.aab
+*.ipa
+*.app/
 
