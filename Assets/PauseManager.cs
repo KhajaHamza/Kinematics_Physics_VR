@@ -11,7 +11,6 @@ public class PauseManager : MonoBehaviour
     void OnEnable()
     {
         pauseAction = inputActions.FindActionMap("VRControls")?.FindAction("Pause");
-
         if (pauseAction != null)
             pauseAction.Enable();
         else
@@ -28,8 +27,14 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseAction != null && pauseAction.WasPressedThisFrame())
         {
-            isSimulationPaused = !isSimulationPaused;
-            Debug.Log(isSimulationPaused ? "Simulation Paused" : "Simulation Resumed");
+            SetPaused(!isSimulationPaused);
         }
+    }
+
+    // Static method to allow other scripts to set pause state
+    public static void SetPaused(bool paused)
+    {
+        isSimulationPaused = paused;
+        Debug.Log(isSimulationPaused ? "Simulation Paused" : "Simulation Resumed");
     }
 }
