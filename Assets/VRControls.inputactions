@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "VRControls",
     "maps": [
         {
@@ -9,7 +10,7 @@
                     "name": "ToggleMenu",
                     "type": "Button",
                     "id": "4e040916-ba5a-44e7-8362-14648fc16d06",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -18,7 +19,7 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "0c378425-8694-4577-8f24-22ba4d90d615",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -42,10 +43,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "TeleportToCar",
+                    "name": "ToggleGraphs",
                     "type": "Button",
                     "id": "26f0c68f-9ef8-42ce-bcf9-99433ec91dab",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -103,7 +104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TeleportToCar",
+                    "action": "ToggleGraphs",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -32,15 +32,19 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button btnShowSingle;
     [SerializeField] Button btnShowMultiple;
 
+    [Header("Graph Control")]
+    [Tooltip("Toggle for Single Car panel - checked = graphs shown, unchecked = graphs hidden")]
+    [SerializeField] Toggle toggleGraphs_Single;
+    [Tooltip("Toggle for Multiple Car panel - checked = graphs shown, unchecked = graphs hidden")]
+    [SerializeField] Toggle toggleGraphs_Multiple;
+
     [Header("Car Refs")]
     public ConstantVelocityCar cvCar;
     public AcceleratedCarMovementWithTicks uaCar;
 
     [Header("External Managers")]
     [SerializeField] VRInputManager vrInputManager;
-
-    [Header("Graph Manager")]
-    public GraphManager graphManager;
+    [SerializeField] GraphManager graphManager;
 
 
     // Cache the CANVAS transform's world position and rotation
@@ -68,6 +72,9 @@ public class MenuManager : MonoBehaviour
         if (btnShowSingle) btnShowSingle.onClick.AddListener(ShowSingle);
         if (btnShowMultiple) btnShowMultiple.onClick.AddListener(ShowMultiple);
 
+        // Graph toggle wiring removed - graphs are now controlled via XR controller (Y button)
+        // Toggles are kept for UI state display only (updated via UpdateGraphToggleStates)
+
         // Initial state update
         UpdateSingleAccelRow();
 
@@ -94,6 +101,9 @@ public class MenuManager : MonoBehaviour
 
             // Show the root panel initially
             ShowRoot();
+
+            // Update graph toggle states to reflect current visibility
+            UpdateGraphToggleStates();
 
             PauseManager.SetPaused(true);
         }
@@ -156,10 +166,16 @@ public class MenuManager : MonoBehaviour
         }
 
         UpdateSingleAccelRow();
+
+        // Update graph toggle state when showing single panel
+        UpdateGraphToggleStates();
     }
 
     public void ShowMultiple()
     {
+        if (uaCar != null)
+            uaCar.simMode = AcceleratedCarMovementWithTicks.SimulationMode.TwoCars;
+
         if (panelRoot) panelRoot.SetActive(false);
         if (panelSingle) panelSingle.SetActive(false);
         if (panelMultiple) panelMultiple.SetActive(true);
@@ -177,12 +193,21 @@ public class MenuManager : MonoBehaviour
 
         // Set follow to UA car in multiple mode
         if (vrInputManager) vrInputManager.SetFollowCar(uaCar.transform);
+
+        // Update graph toggle state when showing multiple panel
+        UpdateGraphToggleStates();
     }
 
     // ===== Single panel behavior =====
     void UpdateSingleAccelRow()
     {
         bool needA = toggleUA_Single.isOn;
+        if (uaCar != null)
+        {
+            uaCar.simMode = toggleUA_Single.isOn ?
+                AcceleratedCarMovementWithTicks.SimulationMode.SingleCar :
+                AcceleratedCarMovementWithTicks.SimulationMode.TwoCars;
+        }
 
         // UI Logic
         if (accelRow_Single)
@@ -221,6 +246,13 @@ public class MenuManager : MonoBehaviour
         float u = Parse(inputU_Single, 0f);
         float a = Parse(inputA_Single, 0f);
 
+        // CRITICAL: Clear graph data BEFORE starting cars
+        // This ensures graphs start collecting from true t=0 when simulation unpauses
+        if (graphManager != null)
+        {
+            graphManager.StartSimulation(clearExistingData: true);
+        }
+
         if (toggleCV_Single.isOn)
         {
             if (cvCar && cvCar.gameObject.activeSelf)
@@ -238,7 +270,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        // Hide menu and unpause
+        // Hide menu and unpause - NOW graphs will start sampling from t=0
         if (panelRoot) panelRoot.SetActive(false);
         if (panelSingle) panelSingle.SetActive(false);
         if (panelMultiple) panelMultiple.SetActive(false);
@@ -253,12 +285,29 @@ public class MenuManager : MonoBehaviour
         float uUA = Parse(inputU_UA, 0f);
         float aUA = Parse(inputA_UA, 1f);
 
-        if (cvCar) cvCar.ApplyParamsAndRestart(uCV);
-        if (uaCar) uaCar.ApplyParamsAndRestart(uUA, aUA);
+        // CRITICAL: Clear graph data BEFORE resetting cars
+        // This ensures graphs start collecting from true t=0 when simulation unpauses
+        if (graphManager != null)
+        {
+            graphManager.StartSimulation(clearExistingData: true);
+        }
+
+        // Reset both cars to their original positions
+        // This ensures they start from their manually positioned locations
+        if (cvCar)
+        {
+            cvCar.ResetSim();
+            cvCar.ApplyParamsAndRestart(uCV);
+        }
+        if (uaCar)
+        {
+            uaCar.ResetSim();
+            uaCar.ApplyParamsAndRestart(uUA, aUA);
+        }
 
         Debug.Log($"[Multiple] Applied: CV u={uCV}, UA u={uUA} a={aUA}");
 
-        // Hide menu and unpause
+        // Hide menu and unpause - NOW graphs will start sampling from t=0
         if (panelRoot) panelRoot.SetActive(false);
         if (panelSingle) panelSingle.SetActive(false);
         if (panelMultiple) panelMultiple.SetActive(false);
@@ -269,4 +318,28 @@ public class MenuManager : MonoBehaviour
 
     float Parse(TMP_InputField f, float def)
         => (f && float.TryParse(f.text, out var v)) ? v : def;
+
+    // ===== Graph Control =====
+    // Note: Graph toggling is now handled via XR controller (Y button) in VRInputManager
+    // This method is kept for UI state synchronization only (to reflect controller state in UI)
+    void UpdateGraphToggleStates()
+    {
+        if (graphManager != null)
+        {
+            bool graphsVisible = graphManager.AreGraphsVisible();
+
+            // Update Single Car panel toggle (without triggering event)
+            if (toggleGraphs_Single != null)
+            {
+                toggleGraphs_Single.SetIsOnWithoutNotify(graphsVisible);
+            }
+
+            // Update Multiple Car panel toggle (without triggering event)
+            if (toggleGraphs_Multiple != null)
+            {
+                toggleGraphs_Multiple.SetIsOnWithoutNotify(graphsVisible);
+            }
+        }
+    }
+
 }

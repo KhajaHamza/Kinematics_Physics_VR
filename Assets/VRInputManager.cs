@@ -13,8 +13,9 @@ public class VRInputManager : MonoBehaviour
     public Transform followCar;  // The currently active car
 
     [Header("External Managers")]
-    public MenuManager menuManager;
-    public GraphManager graphManager;  // ADDED THIS
+    [SerializeField] private MenuManager menuManager;
+    [SerializeField] private GraphManager graphManager;
+
 
     // Settings
     public float distanceFromCamera = 2f;
@@ -29,6 +30,7 @@ public class VRInputManager : MonoBehaviour
     private InputAction resetAction;
     private InputAction toggleMenuAction;
     private InputAction moveWhenPausedAction;
+    private InputAction toggleGraphsAction;
 
     void Start()
     {
@@ -70,11 +72,13 @@ public class VRInputManager : MonoBehaviour
             resetAction = inputActions.FindActionMap("VRControls")?.FindAction("Reset");
             toggleMenuAction = inputActions.FindActionMap("VRControls")?.FindAction("ToggleMenu");
             moveWhenPausedAction = inputActions.FindActionMap("VRControls")?.FindAction("MoveWhenPaused");
+            toggleGraphsAction = inputActions.FindActionMap("VRControls")?.FindAction("ToggleGraphs");
 
             if (pauseAction != null) pauseAction.Enable();
             if (resetAction != null) resetAction.Enable();
             if (toggleMenuAction != null) toggleMenuAction.Enable();
             if (moveWhenPausedAction != null) moveWhenPausedAction.Enable();
+            if (toggleGraphsAction != null) toggleGraphsAction.Enable();
         }
     }
 
@@ -84,6 +88,7 @@ public class VRInputManager : MonoBehaviour
         if (resetAction != null) resetAction.Disable();
         if (toggleMenuAction != null) toggleMenuAction.Disable();
         if (moveWhenPausedAction != null) moveWhenPausedAction.Disable();
+        if (toggleGraphsAction != null) toggleGraphsAction.Disable();
     }
 
     void Update()
@@ -92,6 +97,7 @@ public class VRInputManager : MonoBehaviour
         HandleResetInput();
         HandleMenuToggleInput();
         HandleMovementWhenPaused();
+        HandleToggleGraphsInput();
     }
 
     void HandlePauseInput()
@@ -162,6 +168,22 @@ public class VRInputManager : MonoBehaviour
 
                 Vector3 movement = moveDirection * movementSpeed * Time.unscaledDeltaTime;
                 xrRig.position += movement;
+            }
+        }
+    }
+
+    void HandleToggleGraphsInput()
+    {
+        if (toggleGraphsAction != null && toggleGraphsAction.WasPressedThisFrame())
+        {
+            if (graphManager != null)
+            {
+                graphManager.ToggleGraphs();
+                Debug.Log($"Graphs toggled: {(graphManager.AreGraphsVisible() ? "Visible" : "Hidden")}");
+            }
+            else
+            {
+                Debug.LogWarning("[VRInputManager] Cannot toggle graphs - GraphManager reference is missing!");
             }
         }
     }

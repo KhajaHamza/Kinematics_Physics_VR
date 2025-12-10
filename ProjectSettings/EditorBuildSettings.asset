@@ -6,12 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/DemoScene.unity
+    path: Assets/Samples/XR Interaction Toolkit/3.0.9/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
   - enabled: 0
     path: Assets/Single_Car.unity
     guid: 1ce683792bd90452d96f858a2051e7b2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 117d66692c9d9424fa8c0bdb516447d5, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 831dcf432d0714fb982f45e3355832ee, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 72615dfb167854a4bb9f33d8fcb4d50a, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 5b8b92783ce104aebaae43d8558a683d, type: 2}
+  m_UseUCBPForAssetBundles: 0

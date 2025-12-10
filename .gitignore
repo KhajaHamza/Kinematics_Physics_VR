@@ -1,5 +1,4 @@
-
-# Unity
+# Unity Generated Files
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -9,23 +8,61 @@
 [Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/
 [Rr]ecordings/
+.utmp/
+*BurstDebugInformation*/
+ExportedObj/
 
-# IDE & OS
-.vs/
-.idea/
-.DS_Store
-
-# Unity generated project files
+# Unity Project Files (auto-generated)
 *.csproj
 *.sln
 *.user
 *.pidb
 *.booproj
 *.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.suo
+*.tmp
+*.userprefs
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
 
-# Platform builds
+# Unity Build Artifacts
 *.apk
 *.aab
 *.ipa
 *.app/
+*.unitypackage
 
+# Unity Crash Reports
+crash*.log
+sysinfo.txt
+
+# XCharts Generated Files
+XCharts-Daemon/
+
+# IDE & Editor
+.vs/
+.idea/
+.consulo/
+
+# OS Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
